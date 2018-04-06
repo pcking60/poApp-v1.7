@@ -1,0 +1,7 @@
+C:\Workspace\poApp-v1.6\PostOffice.Common\bin\Release\PostOffice.Common.dll
+C:\Workspace\poApp-v1.6\PostOffice.Common\bin\Release\PostOffice.Common.pdb
+C:\Workspace\poApp-v1.6\PostOffice.Common\bin\Release\EPPlus.dll
+C:\Workspace\poApp-v1.6\PostOffice.Common\bin\Release\EPPlus.xml
+C:\Workspace\poApp-v1.6\PostOffice.Common\obj\Release\PostOffice.Common.csprojResolveAssemblyReference.cache
+C:\Workspace\poApp-v1.6\PostOffice.Common\obj\Release\PostOffice.Common.dll
+C:\Workspace\poApp-v1.6\PostOffice.Common\obj\Release\PostOffice.Common.pdb
