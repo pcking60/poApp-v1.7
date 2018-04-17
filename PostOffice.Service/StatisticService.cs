@@ -20,6 +20,7 @@ namespace PostOffice.Service
         IEnumerable<Export_By_Service_Group_And_Time_District_Po_BCCP> Export_By_Service_Group_And_Time_District_Po_PPTT(string fromDate, string toDate, int districtId, int poId, string currentUser, string userSelected);
         IEnumerable<Export_By_Service_Group_TCBC> Export_By_Service_Group_TCBC(string fromDate, string toDate, int districtId, int poId, string currentUser, string userSelected);
         IEnumerable<Get_General_TCBC> Get_General_TCBC(string fromDate, string toDate, int districtId, int poId, string currentUser, string userSelected);
+        IEnumerable<F04> F04(string fromDate, string toDate, int districtId);
     }
 
     public class StatisticService : IStatisticService
@@ -422,6 +423,11 @@ namespace PostOffice.Service
                     return _statisticRepository.Get_General_TCBC(fromDate, toDate, districtId, poId, userId);
                 }
             }
+        }
+
+        public IEnumerable<F04> F04(string fromDate, string toDate, int districtId)
+        {
+            return _statisticRepository.F04(fromDate, toDate, districtId);
         }
     }
 }

@@ -64,6 +64,9 @@
     <Compile Include="ViewModels\ExportModel\Get_General_TCBC_VM.cs" />
     <Compile Include="ViewModels\ExportModel\TKBD_Export_Detail_Template.cs" />
     <Compile Include="ViewModels\ExportModel\TKBD_Export_Template.cs" />
+    <Compile Include="ViewModels\F04.cs" />
+    <Compile Include="ViewModels\F04_2.cs" />
+    <Compile Include="ViewModels\F04_1.cs" />
     <Compile Include="ViewModels\MainGroup1.cs" />
     <Compile Include="ViewModels\MainGroup3.cs" />
     <Compile Include="ViewModels\RankModel\Rank.cs" />

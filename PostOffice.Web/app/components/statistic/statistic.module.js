@@ -18,6 +18,12 @@
                 templateUrl: "/app/components/statistic/timeStatisticView.html",
                 controller: "timeStatisticController"
             })
+            .state('f04dttl', {
+                url: "/f04-doanh-thu-tinh-luong-theo-don-vi.html",
+                parent: 'base',
+                templateUrl: "/app/components/statistic/f04View.html",
+                controller: "f04Controller"
+            })
             .state('reports', {
                 url: "/bao-cao-doanh-thu.html",
                 parent: "base",

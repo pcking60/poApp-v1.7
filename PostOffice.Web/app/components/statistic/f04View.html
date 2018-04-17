@@ -1,0 +1,39 @@
+﻿<section class="content-header">
+    <h1>
+        <i class="fa fa-bar-chart" aria-hidden="true"></i>
+        Xuất báo cáo Doanh thu tính lương theo đơn vị
+    </h1>
+    <small>Thực hiện xuất file báo cáo Excel theo các chỉ tiêu được chọn</small>
+
+</section>
+<section class="content" style="min-height:500px">
+    <div class="row">
+        <div class="box box-info">
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form class="form-horizontal" novalidate name="frmReport" role="form" ng-submit="F04()">
+                <div class="box-body">                    
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-3 control-label">Chọn thời gian</label>
+                        <div class="col-sm-6">
+                            <input date-range-picker required class="form-control date-picker" type="text" ng-model="report.date" name="name"
+                                   options="{locale: {separator: ' to ', format: 'DD-MM-YYYY'}}" />
+                            <span ng-show="frmReport.name.$invalid" class="text-danger">Cần nhập thông tin vào đây</span>
+                        </div>
+                    </div>                    
+                    <div class="col-md-8">
+                        <div class="col-sm-8 col-sm-offset-4">
+                            <span class="col-sm-5"><button type="submit" class="btn bg-orange btn-flat" ng-disabled="frmReport.$invalid" style="opacity:1">Xuất báo cáo <i ng-if="loading" class="fa fa-spinner fa-pulse fa-1x fa-fw"></i></button></span>                         
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+                <!--<div class="box-footer">
+                    <button type="submit" class="btn btn-info " ng-disabled="frmTimeStatistic.$invalid">Lưu</button>
+                </div>-->
+                <!-- /.box-footer -->
+            </form>
+        </div>
+    </div> <!-- /.row-->
+
+</section>

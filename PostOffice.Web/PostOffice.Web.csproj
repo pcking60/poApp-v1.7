@@ -26,7 +26,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
-    <TypeScriptToolsVersion>2.6</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>2.8</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -242,10 +242,12 @@
     </Content>
     <Content Include="app\components\statistic\revenueStatisticView.html" />
     <Content Include="app\components\statistic\statistic.module.js" />
+    <Content Include="app\components\statistic\f04Controller.js" />
     <Content Include="app\components\statistic\timeStatisticController.js" />
     <Content Include="app\components\statistic\timeStatisticController.min.js">
       <DependentUpon>timeStatisticController.js</DependentUpon>
     </Content>
+    <Content Include="app\components\statistic\f04View.html" />
     <Content Include="app\components\statistic\timeStatisticView.html" />
     <Content Include="app\components\statistic\unitStatisticController.js" />
     <Content Include="app\components\statistic\unitStatisticController.min.js">

@@ -402,5 +402,81 @@ namespace PostOffice.Web.Api
                 return request.CreateErrorResponse(HttpStatusCode.BadRequest, ex.Message);
             }
         }
+        [HttpGet]
+        [Route("f04")]
+        public async Task<HttpResponseMessage> F04(HttpRequestMessage request, string fromDate, string toDate)
+        {
+            //check role
+            bool isAdmin = false;
+            bool isManager = false;
+            isAdmin = _userService.CheckRole(User.Identity.Name, "Administrator");
+            isManager = _userService.CheckRole(User.Identity.Name, "Manager");
+            bool isSupport = _userService.CheckRole(User.Identity.Name, "Support");
+
+            #region Config Export file
+
+            string fileName = string.Concat("Report_" + DateTime.Now.ToString("yyyyMMddhhmmsss") + ".xlsx");
+            var folderReport = ConfigHelper.GetByKey("ReportFolder");
+            string filePath = HttpContext.Current.Server.MapPath(folderReport);
+            if (!Directory.Exists(filePath))
+            {
+                Directory.CreateDirectory(filePath);
+            }
+            string fullPath = Path.Combine(filePath, fileName);
+
+            #endregion Config Export file
+
+            ReportTemplate vm = new ReportTemplate();
+            //IEnumerable<RP1Advance> rp1Advance;
+
+            try
+            {             
+                Model.Models.Service sv = new Model.Models.Service();
+                // current user
+                string currentUser = User.Identity.Name;
+                // Thời gian để xuất dữ liệu
+                DateTime fd;
+                DateTime td;
+                try
+                {
+                    fd = DateTime.ParseExact(fromDate, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+                    vm.FromDate = fd;
+                    td = DateTime.ParseExact(toDate, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+                    vm.ToDate = td;
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                District d = new District();
+                d = _districtService.GetDistrictByUserName(User.Identity.Name);
+                int districtId = d.ID;
+                vm.District = d.Name;
+                vm.CreatedBy = currentUser;
+                vm.FunctionName = "Tổng hợp Doanh thu tính lương từng nhân viên";
+
+                var f04 = _statisticService.F04(fromDate, toDate, districtId);
+                var testData = f04.Count();
+                var f04_transfer = Mapper.Map<IEnumerable<F04>, IEnumerable<F04_1>>(f04);
+                foreach (var item in f04_transfer)
+                {
+                    if (item.Iscurrency == true)
+                    {
+                        item.Currency_Transfer = "Ngoại tệ";
+                    }
+                    else
+                    {
+                        item.Currency_Transfer = "VNĐ";
+                    }                    
+                }
+                var f04_finish = Mapper.Map<IEnumerable<F04_1>, IEnumerable<F04_2>>(f04_transfer);
+                await ReportHelper.F04(f04_finish.ToList(), fullPath, vm);
+                return request.CreateErrorResponse(HttpStatusCode.OK, Path.Combine(folderReport, fileName));
+            }
+            catch (Exception ex)
+            {
+                return request.CreateErrorResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+        }
     }
 }

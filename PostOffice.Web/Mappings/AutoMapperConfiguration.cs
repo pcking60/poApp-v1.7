@@ -40,6 +40,8 @@ namespace PostOffice.Web.Mappings
             Mapper.CreateMap<Get_General_TCBC, Get_General_TCBC_VM>();
             Mapper.CreateMap<Get_General_TCBC_VM, Export_Template_TCBC>();
             Mapper.CreateMap<TransactionViewModel, Get_General_TCBC>();
+            Mapper.CreateMap<F04, F04_1>();
+            Mapper.CreateMap<F04_1, F04_2>();
         }
     }
 }

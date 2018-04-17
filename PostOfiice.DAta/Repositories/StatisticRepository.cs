@@ -60,6 +60,7 @@ namespace PostOfiice.DAta.Repositories
         IEnumerable<Export_By_Service_Group_And_Time_District_Po_BCCP> Export_By_Service_Group_And_Time_PPTT(string fromDate, string toDate);
 
         IEnumerable<RP2_1> RP2_1();
+        IEnumerable<F04> F04(string fromDate, string toDate, int districtId);
     }
 
     public class StatisticRepository : RepositoryBase<UnitStatisticViewModel>, IStatisticRepository
@@ -247,6 +248,16 @@ namespace PostOfiice.DAta.Repositories
                 new SqlParameter("@userId", userId)
             };
             return DbContext.Database.SqlQuery<Export_By_Service_Group_And_Time>("Export_By_Service_Group_And_Time_User @fromDate,@toDate,@mainGroup,@userId", parameters);
+        }
+
+        public IEnumerable<F04> F04(string fromDate, string toDate, int districtId)
+        {
+            var parameters = new SqlParameter[] {
+                new SqlParameter("@fromDate", fromDate),
+                new SqlParameter("@toDate", toDate),
+                new SqlParameter("@districtId", districtId)
+            };
+            return DbContext.Database.SqlQuery<F04>("F04_Statistic_DTTL_MAIN_GROUP_DISTRICT_TIME @fromDate,@toDate,@districtId", parameters).ToList();
         }
 
         public IEnumerable<UnitStatisticViewModel> GetUnitStatistic(string fromDate, string toDate)
